@@ -1,0 +1,23 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node ./dist/index.js",
+    "build": "tsc"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "name": "lol-team",
+  "description": "A bot to help you find a team for League of Legends",
+  "version": "1.0.0",
+  "dependencies": {
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1",
+    "kayn": "^0.10.2",
+    "typescript": "^5.2.2",
+    "zod": "^3.22.2"
+  }
+}
