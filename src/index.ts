@@ -126,7 +126,7 @@ client.on('ready', async () => {
         for (const name of summonerNames) {
             checkSummonerGame(name);
         }
-    }, 30000); // Comprobar cada minuto
+    }, 450000); // Comprobar cada minuto
 
     const time = 6 * 60 * 60 * 1000;
 
