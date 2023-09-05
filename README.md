@@ -65,4 +65,9 @@ Asegúrate de rellenar los valores correspondientes en el archivo `.env`.
 
 ---
 
-Espero que disfrutes usando este bot. Si tienes alguna pregunta o encuentras algún problema, no dudes en abrir un issue o contactar con el desarrollador.
+Ahora deberas ir al discord, agregar el role con el mismo nombre que has agregado antes en las enviroments, y cambiarle los nicks dentro de tu servidor a tus jugadores por sus nombres dentro del juego, y ya con esto tienes todo hecho. disfruta de tu bot :)
+
+TODOS: 
+   - [] Poder configurar el servidor en el que se estan jugando las partidas. ( actualmente es EUW ).
+
+Espero que disfrutes usando este bot. Si tienes alguna pregunta o encuentras algún problema, no dudes en abrir un issue, una PR o contactar conmigo.
