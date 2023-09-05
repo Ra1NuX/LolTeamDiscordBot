@@ -1,6 +1,8 @@
 # Bot de Discord en NodeJS con TypeScript
 
-Este bot ha sido desarrollado usando NodeJS y TypeScript. A continuación, te explicaré cómo configurarlo, lanzarlo y cómo obtener las claves necesarias.
+Este bot ha sido desarrollado usando NodeJS y TypeScript para obtener la información de las partidas que juegue tu equipo de lol y te lo notifique al discord. 
+
+A continuación, te explicaré cómo configurarlo, lanzarlo y cómo obtener las claves necesarias.
 
 ## Configuración
 
@@ -68,6 +70,7 @@ Asegúrate de rellenar los valores correspondientes en el archivo `.env`.
 Ahora deberas ir al discord, agregar el role con el mismo nombre que has agregado antes en las enviroments, y cambiarle los nicks dentro de tu servidor a tus jugadores por sus nombres dentro del juego, y ya con esto tienes todo hecho. disfruta de tu bot :)
 
 TODOS: 
-   - [] Poder configurar el servidor en el que se estan jugando las partidas. ( actualmente es EUW ).
+
+- [ ] Poder configurar el servidor en el que se estan jugando las partidas desde el .env ( actualmente es solo para EUW ).
 
 Espero que disfrutes usando este bot. Si tienes alguna pregunta o encuentras algún problema, no dudes en abrir un issue, una PR o contactar conmigo.
