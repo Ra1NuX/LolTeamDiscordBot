@@ -74,7 +74,7 @@ client.on('ready', async () => {
                 gameCounts[gameId]++;
 
                 // Verificar si hay 3 o más jugadores en esta partida
-                if (gameCounts[gameId] >= (Number(process.env.PLAYERS_IN_GAME) || 3)  && !notifiedGames.has(gameId) ) {
+                if (gameCounts[gameId] >= (Number(process.env.PLAYERS_IN_GAME))  && !notifiedGames.has(gameId) ) {
                     const channel = guild.channels.cache.find(ch => ch.id === env.DISCORD_CHANNEL_ID && ch.type === ChannelType.GuildText); 
                     
                     
