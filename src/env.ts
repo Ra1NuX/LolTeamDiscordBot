@@ -9,6 +9,7 @@ const envSchema = z.object({
     DISCORD_ROLE_NAME: z.string(),
     DISCORD_CHANNEL_ID: z.string(),
     DISCORD_SERVER_ID: z.string(),
+    DB_URI: z.string(),
 });
 
 const env = envSchema.parse(process.env);
