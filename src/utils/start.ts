@@ -1,23 +1,21 @@
 import { Client } from 'discord.js';
-import cron from 'node-cron';
 import getSummonerNames from './getSummonerNames';
 import checkTeamGames from './checkTeamGames';
 
 
 const start = async (client: Client) => {
-    cron.schedule('*/15 * * * *', async () => {
-        console.log('Client is ready!');
-        try {
-            const summonerNames = await getSummonerNames(client);
+    console.log('Client is ready!');
 
-            for await (const name of summonerNames) {
-                await checkTeamGames(name, client);
-            }
+    try {
+        const summonerNames = await getSummonerNames(client);
 
-        } catch (e) {
-            console.log(e)
+        for await (const name of summonerNames) {
+            await checkTeamGames(name, client);
         }
-    }, {scheduled: true, timezone: "Europe/Madrid"})
+
+    } catch (e) {
+        console.log(e)
+    }
 };
 
 export default start;

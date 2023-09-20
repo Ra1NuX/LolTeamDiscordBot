@@ -23,7 +23,7 @@ const sendMessageToDiscord = async (currentGame: CurrentGameInfoDTO, client: Cli
                 { name: 'Equipo 1: ', value: currentGame.participants!.map(p => p.teamId === [...filterByTeamId][0] && p.summonerName).join(', ') },
                 { name: 'Equipo 2: ', value: currentGame.participants!.map(p => p.teamId === [...filterByTeamId][1] && p.summonerName).join(', ') }
             ])
-            .setTimestamp();
+            .setTimestamp(new Date());
 
 
         channel.send({ embeds: [embed] });
