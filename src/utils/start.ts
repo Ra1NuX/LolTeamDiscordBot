@@ -15,6 +15,9 @@ const start = async (client: Client) => {
 
     } catch (e) {
         console.log(e)
+    } finally{
+        client.destroy();
+        process.exit(0)
     }
 };
 
