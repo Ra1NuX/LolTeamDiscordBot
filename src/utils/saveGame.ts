@@ -1,8 +1,12 @@
 import { CurrentGameInfoDTO } from "twisted/dist/models-dto";
+import env from "../env";
 import MongoClient from "./db";
 
 const saveGame = async (game: CurrentGameInfoDTO) => {
   try {
+    if(env.NODE_ENV === 'development') {
+      return true
+    }
     await MongoClient.connect();
     const db = MongoClient.db("LoLTeamBot");
     const games = db.collection("games");

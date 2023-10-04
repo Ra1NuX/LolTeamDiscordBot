@@ -1,7 +1,7 @@
-import { Client, GatewayIntentBits } from 'discord.js';
+import getDiscordClient from './utils/getDiscordClient';
 import start from './utils/start';
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessages] });
+const client = getDiscordClient();
 
 client.on('ready', start);
 

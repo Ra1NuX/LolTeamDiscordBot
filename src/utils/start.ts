@@ -4,13 +4,13 @@ import checkTeamGames from './checkTeamGames';
 
 
 const start = async (client: Client) => {
-    console.log('Client is ready!');
+        console.log('Client is ready!');
 
     try {
-        const summonerNames = await getSummonerNames(client);
+        const summonerNames = await getSummonerNames();
 
         for await (const name of summonerNames) {
-            await checkTeamGames(name, client);
+            await checkTeamGames(name);
         }
 
     } catch (e) {

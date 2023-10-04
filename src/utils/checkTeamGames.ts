@@ -1,12 +1,11 @@
-import { Client } from "discord.js";
 import env from "../env";
 import { GameCounts } from "../models/lol";
 import getActiveGame from "./getActiveGame";
-import sendMessageToDiscord from "./sendMessageToDiscord";
+import sendMessageToDiscord, { Target } from "./sendMessageToDiscord";
 
 const gameCounts: GameCounts = {};
 
-const checkTeamGames = async (name: string, client: Client) => {
+const checkTeamGames = async (name: string) => {
     try {
         
         const currentGame = await getActiveGame(name);
@@ -23,7 +22,7 @@ const checkTeamGames = async (name: string, client: Client) => {
 
         // Verificar si hay 3 o más jugadores en esta partida
         if (gameCounts[gameId] >= (Number(env.PLAYERS_IN_GAME))) {
-            await sendMessageToDiscord(currentGame, client);
+            await sendMessageToDiscord(currentGame, Target.channel);
         }
 
     } catch (e) {
