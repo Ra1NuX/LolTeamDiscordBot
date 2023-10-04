@@ -1,7 +1,8 @@
 import { CurrentGameInfoDTO } from "twisted/dist/models-dto";
 import env from "../env";
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, Client, ComponentType, EmbedBuilder } from "discord.js";
+import { ChannelType, Colors, EmbedBuilder } from "discord.js";
 import getDiscordClient from "./getDiscordClient";
+import formatTeam from "./formatTeam";
 
 export enum Target {
     channel = 'CHANNEL',
@@ -14,18 +15,18 @@ const sendMessageToDiscord = async (currentGame: CurrentGameInfoDTO, target: Tar
     const serverId = env.DISCORD_SERVER_ID;
     const guild = await client.guilds.fetch(serverId);
 
-    const filterByTeamId = new Set<number>(currentGame.participants!.map(p => p.teamId!).filter(Boolean));
+    const teams = formatTeam(currentGame)
 
     const embed = new EmbedBuilder()
         .setTitle(`Se esta jugando una ${target === Target.user ? `partida con tu cuenta ${name}` : 'Scrim!'}!`)
-        .setColor(0x00AE86)
+        .setColor(Colors.Yellow)
         .setURL(`https://www.leagueofgraphs.com/es/match/euw/${currentGame.gameId}`)
         .setDescription(`${target === Target.user ? `${name} esta jugando una SoloQ: ` : '¡3 o más miembros están en la misma partida!'} ID de la partida: ${currentGame.gameId}`)
         .setFields([
-            { name: 'Equipo 1: ', value: currentGame.participants!.map(p => p.teamId === [...filterByTeamId][0] && p.summonerName).filter(Boolean).join('\n') },
-            { name: 'Equipo 2: ', value: currentGame.participants!.map(p => p.teamId === [...filterByTeamId][1] && p.summonerName).filter(Boolean).join('\n') }
+            { name: 'Equipo 1: ', value: teams.team1 },
+            { name: 'Equipo 2: ', value: teams.team2 }
         ])
-        .setTimestamp(new Date());
+        .setTimestamp(new Date(currentGame.gameStartTime));
 
     if (target === Target.user) {
 

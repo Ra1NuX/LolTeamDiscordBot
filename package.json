@@ -12,7 +12,7 @@
   "license": "ISC",
   "name": "lol-team",
   "description": "A bot to help you find a team for League of Legends",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "dependencies": {
     "discord.js": "^14.13.0",
     "mongodb": "^6.1.0",
