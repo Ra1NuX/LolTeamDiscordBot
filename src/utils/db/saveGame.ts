@@ -1,6 +1,6 @@
 import { MatchV5DTOs } from "twisted/dist/models-dto";
 import env from "../../env";
-import MongoClient from "../db";
+import db from "../db";
 
 const saveGame = async (game: MatchV5DTOs.MatchDto) => {
   try {
@@ -8,7 +8,6 @@ const saveGame = async (game: MatchV5DTOs.MatchDto) => {
       return true
     }
     
-    const db = MongoClient.db(env.DB_NAME);
     const games = db.collection("games");
     const gameExists = await games.findOne({ gameId: game.info.gameId });
 

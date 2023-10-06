@@ -10,9 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "name": "lol-team",
+  "name": "dcgg",
   "description": "A bot to help you with stats for a team for League of Legends",
-  "version": "1.2.0",
+  "version": "2.0.1",
   "dependencies": {
     "discord.js": "^14.13.0",
     "mongodb": "^6.1.0",

@@ -1,10 +1,10 @@
-import { Client } from 'discord.js';
+
 import getSummonerNames from './getSummonerNames';
 import checkTeamGames from './checkTeamGames';
-import MongoClient from "./db";
 import env from '../env';
 import notifyScrim from './notifyScrim';
 import clean from './clean';
+import db, { mongoClient } from './db';
 
 
 const start = async () => {
@@ -16,7 +16,6 @@ const start = async () => {
         if (env.NODE_ENV === 'development') time = 15000;
 
         console.log(`Check each ${time / 1000} seconds`)
-        await MongoClient.connect();
 
         setInterval(async () => {
             console.log('Starting analize');
@@ -41,7 +40,7 @@ const start = async () => {
     } catch (e) {
         console.log(e)
     } finally {
-        MongoClient.close();
+        mongoClient.close();
     }
 };
 
