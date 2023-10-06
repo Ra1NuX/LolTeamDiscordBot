@@ -1,12 +1,9 @@
-import { ChampionApi } from "twisted/dist/apis/lol/champion/champion";
 import { getChampionNameCapital } from "twisted/dist/constants";
-import { CurrentGameInfoDTO } from "twisted/dist/models-dto";
+import { MatchV5DTOs } from "twisted/dist/models-dto";
 
-const formatTeam = (currentGame: CurrentGameInfoDTO) => {
+const formatTeam = (currentGame: MatchV5DTOs.InfoDto) => {
     
     const { participants } = currentGame;
-
-    
 
     const team1 = [];
     const team2 = [];
@@ -22,8 +19,8 @@ const formatTeam = (currentGame: CurrentGameInfoDTO) => {
         }
     }
 
-    const formatedTeam1 = team1.map(participant => `- ${participant.summonerName}  ( **${getChampionNameCapital(participant.championId)}** )`)
-    const formatedTeam2 = team2.map(participant => `- ${participant.summonerName}  ( **${getChampionNameCapital(participant.championId)}** )`)
+    const formatedTeam1 = team1.map(participant => `- **${getChampionNameCapital(participant.championId)}** (${participant.kills}/${participant.deaths}/${participant.assists}) \n ${participant.summonerName}`)
+    const formatedTeam2 = team2.map(participant => `- **${getChampionNameCapital(participant.championId)}** (${participant.kills}/${participant.deaths}/${participant.assists}) \n ${participant.summonerName}`)
 
     return { team1: formatedTeam1.join('\n'), team2: formatedTeam2.join('\n') }
 

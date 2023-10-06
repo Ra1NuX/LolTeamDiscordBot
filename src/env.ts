@@ -10,6 +10,9 @@ const envSchema = z.object({
     DISCORD_CHANNEL_ID: z.string(),
     DISCORD_SERVER_ID: z.string(),
     DB_URI: z.string(),
+    DB_NAME: z.string(),
+    MINUTES: z.string().default('15'),
+    LOCAL_USERNAME: z.string().optional()
 });
 
 const env = envSchema.parse(process.env);

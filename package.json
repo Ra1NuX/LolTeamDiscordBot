@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "name": "lol-team",
-  "description": "A bot to help you find a team for League of Legends",
+  "description": "A bot to help you with stats for a team for League of Legends",
   "version": "1.2.0",
   "dependencies": {
     "discord.js": "^14.13.0",
