@@ -28,18 +28,20 @@ const start = async () => {
 
             console.log('Nombres a analizar: ', summonerNames.join(', '))
 
+            mongoClient.connect()
+
             for await (const name of summonerNames) {
                 await checkTeamGames(name);
             }
 
             await notifyScrim()
-            clean()
-
+            
         }, time);
-
+        
     } catch (e) {
         console.log(e)
     } finally {
+        clean()
         mongoClient.close();
     }
 };
