@@ -10,14 +10,14 @@ const getLastGame = async (name: string) => {
     try {
         const api = new LolApi({ key: env.RIOT_API_KEY, rateLimitRetry: true, rateLimitRetryAttempts: 3, concurrency: undefined });
         const { response: summoner } = await api.Summoner.getByName(name, Constants.Regions.EU_WEST);
-
+        
         if (!summoner || !summoner.id) return null;
+        await saveUser(summoner);
         
         const { response: [lastGameID] } = await api.MatchV5.list(summoner.puuid, Constants.RegionGroups.EUROPE, { count: 1, queue: 420 });
         gameCounts[lastGameID] += 1
         const lastGame = (await api.MatchV5.get(lastGameID, Constants.RegionGroups.EUROPE)).response
         
-        await saveUser(summoner, lastGameID);
         const isCreated = await saveGame(lastGame);
 
         if (!isCreated) {
