@@ -15,16 +15,16 @@ const getLastGame = async (name: string) => {
         await saveUser(summoner);
         
         const { response: [lastGameID] } = await api.MatchV5.list(summoner.puuid, Constants.RegionGroups.EUROPE, { count: 1, queue: 420 });
-        gameCounts[lastGameID] += 1
-        const lastGame = (await api.MatchV5.get(lastGameID, Constants.RegionGroups.EUROPE)).response
+        gameCounts[lastGameID] += 1;
+        const lastGame = (await api.MatchV5.get(lastGameID, Constants.RegionGroups.EUROPE)).response;
         
-        const isCreated = await saveGame(lastGame);
+        const isCreated = await saveGame(lastGame, summoner.puuid);
 
         if (!isCreated) {
             return null
-        }
+        };
 
-        await sendMessageToDiscord(lastGame.info, Target.user, name)
+        await sendMessageToDiscord(lastGame.info, Target.user, name);
 
         return lastGame.info;
     } catch (e) {

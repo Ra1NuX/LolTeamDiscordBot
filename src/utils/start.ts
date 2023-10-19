@@ -34,14 +34,13 @@ const start = async () => {
                 await checkTeamGames(name);
             }
 
-            await notifyScrim()
-            
+            await notifyScrim();
+            clean();
         }, time);
         
     } catch (e) {
         console.log(e)
     } finally {
-        clean()
         mongoClient.close();
     }
 };
