@@ -1,8 +1,8 @@
-import { SummonerV4DTO } from "twisted/dist/models-dto";
+import { SummonerLeagueDto, SummonerV4DTO } from "twisted/dist/models-dto";
 import env from "../../env";
 import db from "../db";
 
-const saveUser = async (user: SummonerV4DTO) => {
+const saveUser = async (user: SummonerV4DTO&SummonerLeagueDto) => {
     try {
 
         if (env.NODE_ENV === 'development') {
