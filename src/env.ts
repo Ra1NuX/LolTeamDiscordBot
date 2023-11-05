@@ -12,7 +12,9 @@ const envSchema = z.object({
     DB_URI: z.string(),
     DB_NAME: z.string().default('LolTeamBot'),
     MINUTES: z.string().default('15'),
-    LOCAL_USERNAME: z.string().optional()
+    LOCAL_USERNAME: z.string().optional(),
+    FRONT_URL: z.string().optional(),
+    REVALIDATE_TOKEN: z.string().optional(),
 });
 
 const env = envSchema.parse(process.env);

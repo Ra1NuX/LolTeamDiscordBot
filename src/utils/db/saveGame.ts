@@ -1,9 +1,10 @@
-import { MatchV5DTOs } from "twisted/dist/models-dto";
+import { MatchV5DTOs, SummonerV4DTO } from "twisted/dist/models-dto";
 import env from "../../env";
 import { gamesById } from "../checkTeamGames";
 import db from "../db";
+import revalidate from "../revalidate";
 
-const saveGame = async (game: MatchV5DTOs.MatchDto, userPuuid: string) => {
+const saveGame = async (game: MatchV5DTOs.MatchDto, summoner: SummonerV4DTO) => {
   try {
     if(env.NODE_ENV === 'development') {
       return true
@@ -18,13 +19,15 @@ const saveGame = async (game: MatchV5DTOs.MatchDto, userPuuid: string) => {
     const isDuo = ids.includes(game.info.gameId.toString())
 
     if(isDuo) {
-      await users.updateOne({puuid: userPuuid}, {$push: { games: game.info.gameId }})
+      await users.updateOne({puuid: summoner.puuid}, {$push: { games: game.info.gameId }})
       return true;
     }
 
     if(gameExists) return false;
     
     await games.insertOne(game.info);
+    await revalidate(summoner.name);
+
     return true;
 
   } catch(e) {

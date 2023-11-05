@@ -19,7 +19,7 @@ const getLastGame = async (name: string) => {
         gameCounts[lastGameID] += 1;
         const lastGame = (await api.MatchV5.get(lastGameID, Constants.RegionGroups.EUROPE)).response;
         
-        const isCreated = await saveGame(lastGame, summoner.puuid);
+        const isCreated = await saveGame(lastGame, summoner);
 
         if (!isCreated) {
             return null

@@ -4,7 +4,7 @@ import checkTeamGames from './checkTeamGames';
 import env from '../env';
 import notifyScrim from './notifyScrim';
 import clean from './clean';
-import db, { mongoClient } from './db';
+import { mongoClient } from './db';
 
 
 const start = async () => {
@@ -37,6 +37,8 @@ const start = async () => {
             await notifyScrim();
             clean();
         }, time);
+
+        const day = 24 * 60 * 60 * 1000;
         
     } catch (e) {
         console.log(e)
